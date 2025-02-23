@@ -1,0 +1,221 @@
+﻿@{
+    ViewData["Title"] = "OverView";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PQT - Bangboo E-commerce</title>
+    <link rel="icon" type="image/x-icon" href="/Asset/logo/sleep-mode.png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Navbar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/OverView.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Bangboo_E_Commerce.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9.1.1/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.skypack.dev/lightgallery@2.0.0-beta.3/dist/css/lightgallery.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/efa6b62b9f14c00a8449fe121136f553?family=Haulage+Commercial+W00+Bold+It" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/3889a81d538246d1cdb7bf2bd997fa72?family=Korataki+W01+Regular" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/de335dd5a66ff095f317757fc7fb58a5?family=Korataki" rel="stylesheet">
+</head>
+<body>
+    <div class="SectionList">
+        <div id="sidebar" class="sidebar">
+            <ul class="progress-bar">
+                <li><a href="#section1">Home</a></li>
+                <li><a href="#section2">Intro</a></li>
+                <li><a href="#section3">Our work</a></li>
+                <li><a href="#section4">Feature</a></li>
+                <li><a href="#section5">Gallery</a></li>
+            </ul>
+        </div>
+        <section id="section1" class="s1">
+            <div class="img01">
+                <img src="~/Asset/Main.jpg" onclick="redirectToLink01()" />
+            </div>
+            <div class="img02">
+                <a href="https://m.me/485350198000282" target="_blank">
+                    <img src="~/Asset/bangboo/Eous.png" />
+                    <img src="~/Asset/Logo/Facebook_Messenger_logo_2020.png" alt="Messenger" style="width: 40px; height: 40px; top: 515px; left: 5px; color: black;">
+                </a>
+            </div>
+        </section>
+
+        <section id="section2" class="s2">
+            <div class="Our">
+                <div class="Our01">Redefine the bangboo</div>
+                <div class="Our02">
+                    We believe that our bangboo helper, plays a crucial role in the pursuit of meaningful work
+                </div>
+            </div>
+            <div class="OurImg">
+                <img src="/Asset/Bangboo/GoldBangboo.jpg" alt="Alternate Text" class="Allbangboo" />
+            </div>
+        </section>
+
+        <section id="section3" class="s3">
+            <div class="Intro">
+                <div class="Intro01">Bangboo Inspires</div>
+                <div class="Intro02">Get your own dream Bangboo, so you can get your best work done</div>
+                <a class=" Intro03" onclick="redirectToLink01()">Contact Us</a>
+            </div>
+            <div class="IntroImg">
+                <div class="img03">
+                    <img src="/Asset/3.jpg" alt="Alternate Text" class="bestDps" onclick="redirectToLink02()"/>
+                    <div class="dpstext1">The Loveable Bangboo</div>
+                    <a class="dpstext2" style="float: none; margin-left: 0;" onclick="redirectToLink02()">Learn more</a>
+                </div>
+                <div class="img04">
+                    <img src="/Asset/4.jpg" alt="Alternate Text" class="bestSup" onclick="redirectToLink03()"/>
+                    <div class="suptext1">The Dependable Bangboo</div>
+                    <a class="suptext2" style="float: none; margin-left: 0;" onclick="redirectToLink03()">Learn more</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="section4" class="s4">
+            <div class="Feature">
+                <div class="Feature01">Bangboo Featured</div>
+            </div>
+            <div class="carousel">
+                <div class="div1" onclick="redirectToLink04()"></div>
+                <div class="hide1" onclick="redirectToLink04()">Sumoboo</div>
+                <div class="div2" onclick="redirectToLink05()"></div>
+                <div class="hide2" onclick="redirectToLink04()">Electroboo</div>
+                <div class="div3" onclick="redirectToLink06()" ></div>
+                <div class="hide3" onclick="redirectToLink04()">Officerboo</div>
+                <div class="div4" onclick="redirectToLink07()" ></div>
+                <div class="hide4" onclick="redirectToLink04()">Knightboo</div>
+            </div>
+        </section>
+
+        <section id="section5" class="s5">
+            <div class="gallery-container">
+                <div id="lg-swipper" class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" data-src="/Asset/1.jpg">
+                            <img class="img-responsive" src="/Asset/1.jpg" alt="Image 1">
+                        </div>
+                        <div class="swiper-slide" data-src="/Asset/2.jpg">
+                            <img class="img-responsive" src="/Asset/2.jpg" alt="Image 2">
+                        </div>
+                        <div class="swiper-slide" data-src="/Asset/3.jpg">
+                            <img class="img-responsive" src="/Asset/3.jpg" alt="Image 3">
+                        </div>
+                        <div class="swiper-slide" data-src="/Asset/4.jpg">
+                            <img class="img-responsive" src="/Asset/4.jpg" alt="Image 4">
+                        </div>
+                        <div class="swiper-slide" data-src="/Asset/5.jpg">
+                            <img class="img-responsive" src="/Asset/5.jpg" alt="Image 5">
+                        </div>
+                        <div class="swiper-slide" data-src="/Asset/6.jpg">
+                            <img class="img-responsive" src="/Asset/6.jpg" alt="Image 6">
+                        </div>
+                        <div class="swiper-slide" data-src="/Asset/7.jpg">
+                            <img class="img-responsive" src="/Asset/7.jpg" alt="Image 7">
+                        </div>
+                        <div class="swiper-slide" data-src="/Asset/8.jpg">
+                            <img class="img-responsive" src="/Asset/8.jpg" alt="Image 8">
+                        </div>
+                        <div class="swiper-slide" data-src="/Asset/9.jpg">
+                            <img class="img-responsive" src="/Asset/9.jpg" alt="Image 9">
+                        </div>
+                        <div class="swiper-slide" data-src="/Asset/10.jpg">
+                            <img class="img-responsive" src="/Asset/10.jpg" alt="Image 10">
+                        </div>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next" style="color: #c6e800;"></div>
+                    <div class="swiper-button-prev" style="color: white;"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        function redirectToLink01() {
+            window.location.href = 'Account/Subscribe';
+        }
+
+        function redirectToLink02() {
+            window.location.href = 'Bangboo/Product';
+        }
+
+        function redirectToLink03() {
+            window.location.href = 'Bangboo/Product';
+        }
+
+        function redirectToLink04() {
+            window.location.href = 'Bangboo/Product-Info-Sumoboo';
+        }
+
+        function redirectToLink05() {
+            window.location.href = 'Bangboo/Product-Info-Electroboo';
+        }
+
+        function redirectToLink06() {
+            window.location.href = 'Bangboo/Product-Info-Officerboo';
+        }
+
+        function redirectToLink07() {
+            window.location.href = 'Bangboo/Product-Info-Knightboo';
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9.1.1/swiper-bundle.min.js"></script>
+    <script type="module">
+        import lightGallery from "https://cdn.skypack.dev/lightgallery@2.0.0-beta.3";
+
+        let $lgSwiper = document.getElementById("lg-swipper");
+
+        const swiper = new Swiper(".swiper", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+        });
+    </script>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/675abfedaf5bfec1dbdae73b/1iet7re1f';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {};
+
+        Tawk_API.customStyle = {
+            visibility : {
+                desktop : {
+                    position : 'br',
+                    xOffset : '15px',
+                    yOffset : 15
+                },
+                mobile : {
+                    position : 'br',
+                    xOffset : 0,
+                    yOffset : 0
+                },
+                bubble : {
+                    rotate : '0deg',
+                    xOffset : -20,
+                    yOffset : 0
+                }
+            }
+        };
+    </script>
+</body>
+</html>

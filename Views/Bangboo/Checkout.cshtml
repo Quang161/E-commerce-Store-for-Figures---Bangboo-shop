@@ -1,0 +1,131 @@
+﻿<head>
+    <link rel="stylesheet" href="~/css/Checkout.css?v=1.1">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/efa6b62b9f14c00a8449fe121136f553?family=Haulage+Commercial+W00+Bold+It" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/3889a81d538246d1cdb7bf2bd997fa72?family=Korataki+W01+Regular" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/de335dd5a66ff095f317757fc7fb58a5?family=Korataki" rel="stylesheet">
+    <script src="https://sandbox.paypal.com/sdk/js?client-id=ATGAVeuBEMUSerJWDyPfyjNckNC5H69wYjg0RJ4ZxT82iypXPY8tKpkV3rWw2CqeiltZy-3QMVWVBE6T&components=buttons"></script>
+    <style>
+        button.pay-button:hover {
+            background: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="form-container">
+            <form method="post" action="/Bangboo/ConfirmCheckout" id="checkoutForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <div class="checkbox">
+                    <input type="checkbox" id="news-offers">
+                    <label for="news-offers">Email me with news and offers</label>
+                </div>
+
+                <label for="country">Country/Region</label>
+                <select id="country">
+                    <option>Vietnam</option>
+                    <option>United States</option>
+                </select>
+                <div class="username">
+                    <input type="text" id="firstname" placeholder="First name (optional)">
+                    <input type="text" id="lastname" placeholder="Last name (optional)">
+                </div>
+                <input type="text" id="address" placeholder="Enter your address">
+                <input type="text" id="city" placeholder="Enter city">
+                <input type="text" id="phone" placeholder="Enter phone number">
+                <div class="checkbox">
+                    <input type="checkbox" id="save-info">
+                    <label for="save-info">Save this information for next time</label>
+                </div>
+
+                <h2>Payment</h2>
+                <label for="payment-method">Payment Method</label>
+                <div class="payment-method">
+                    <input type="radio" id="credit-card" name="payment-method">
+                    <label for="credit-card">Credit Card</label>
+                    <input type="radio" id="paypal" name="payment-method">
+                    <label for="paypal">PayPal</label>
+                </div>
+                <div class="credit-card-info">
+                    <input type="text" id="card-number" placeholder="Card number">
+                    <input type="text" id="expiration" placeholder="Expiration Date MM/YY">
+                    <input type="text" id="cvv" placeholder="CVV">
+                    <input type="text" id="name-card" placeholder="Name on card">
+                    <button type="submit" class="pay-button btn-secondary btn-lg" disabled>Pay Now</button>
+                </div>
+                <input type="hidden" id="transactionId" name="TransactionId" />
+                <input type="hidden" id="sellerInfo" name="SellerInfo" />
+                <input type="hidden" id="paymentMethod" name="PaymentMethod" value="PayPal" />
+                <div id="paypal-button-container"></div>
+            </form>
+        </div>
+
+        <div class="summary-container">
+            @foreach (var item in ViewBag.CartItems)
+            {
+                <div class="product">
+                    <div class="product-image-container">
+                        <img src="@item.ImageUrl" alt="@item.Name">
+                        <span class="quantity-indicator">@item.Quantity</span>
+                    </div>
+                    <div class="product-details">
+                        <span>@item.Name</span>
+                        <span>$@item.Price.ToString("0")</span>
+                    </div>
+                </div>
+            }
+            <div class="total">
+                <p>Total: <strong>$@ViewBag.TotalAmount.ToString("0")</strong></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const creditCardInfo = document.querySelector('.credit-card-info');
+            const paypalButtonContainer = document.getElementById('paypal-button-container');
+            const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+
+            creditCardInfo.style.display = "none";
+            paypalButtonContainer.style.display = "none";
+
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', () => {
+                    if (method.id === 'credit-card' && method.checked) {
+                        creditCardInfo.style.display = "block";
+                        paypalButtonContainer.style.display = "none";
+                    } else if (method.id === 'paypal' && method.checked) {
+                        creditCardInfo.style.display = "none";
+                        paypalButtonContainer.style.display = "block";
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        var TotalAmount = @ViewBag.TotalAmount;
+
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: TotalAmount.toFixed(0)
+                        }
+                    }]
+                });
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    document.getElementById('transactionId').value = details.id;
+                    document.getElementById('sellerInfo').value = details.payer.email_address;
+
+                    document.getElementById('checkoutForm').submit();
+                });
+            },
+            onError: function (err) {
+                console.error("PayPal Payment Error", err);
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>

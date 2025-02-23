@@ -1,0 +1,586 @@
+﻿@model IEnumerable<Bangboo_E_Commerce.Models.BangbooImage_Code>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangboo</title>
+    <link rel="stylesheet" href="~/css/BangbooStyle.css?v=1.1">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/efa6b62b9f14c00a8449fe121136f553?family=Haulage+Commercial+W00+Bold+It" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/3889a81d538246d1cdb7bf2bd997fa72?family=Korataki+W01+Regular" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/de335dd5a66ff095f317757fc7fb58a5?family=Korataki" rel="stylesheet">
+</head>
+<body>
+    <div class="container backgroundimage">
+        @foreach (var image in Model)
+        {
+            <div class="mySlides">
+                <a href="@Url.RouteUrl("product-info", new { idImage = image.IDImage })">
+                    <img src="@image.URL"
+                         style="width: 100%;"
+                         data-id="@image.IDImage">
+                </a>
+            </div>
+        }
+
+        <div class="thumbnail-container">
+            <div class="prev">&#10094;</div>
+            <div class="thumbnail-row">
+                @foreach (var image in Model)
+                {
+                    <div class="column thumbnail-item" data-id="@image.IDImage">
+                        <img class="demo cursor"
+                             src="@image.URL"
+                             style="width: 100%"
+                             draggable="false"
+                             data-id="@image.IDImage"
+                             data-url="@image.URL">
+                    </div>
+                }
+            </div>
+            <div class="next">&#10095;</div>
+        </div>
+    </div>
+    <div class="card-container" data-index="1">
+        <div class="card">
+            <div class="div1">
+                <h1>Amillion</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Amillion is Nicole's ever-faithful sidekick and member of the Cunning Hares, where it ranks just below Billy Kid. Its name represents Nicole's dreams and ambitions of getting rich.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">S</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">1000</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Amilion" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="2">
+        <div class="card">
+            <div class="div1">
+                <h1>Avocaboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Avocaboo is a cheerful Bangboo shaped like an avocado, symbolizing freshness and creativity. Its quick wit and positive energy make it an invaluable companion for every adventure.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">None</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">500</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Avocaboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="3">
+        <div class="card">
+            <div class="div1">
+                <h1>Bagboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Bagboo is a stylish and versatile Bangboo, always ready to carry the essentials. With its practical design and trendy flair, it’s the perfect companion for any journey, big or small.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">700</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Bagboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+     <div class="card-container" data-index="4">
+        <div class="card">
+            <div class="div1">
+                <h1>Boollseye</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Boollseye is a focused and determined Bangboo, with an exceptional knack for accuracy. Whether it's aiming for goals or solving problems, this little sharpshooter never misses the mark.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">400</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Boollseye" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="5">
+        <div class="card">
+            <div class="div1">
+                <h1>Booressure</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Booressure is a calm and composed Bangboo, known for its ability to handle pressure with grace. Always steady in the face of challenges, it helps its owner stay grounded and focused under stress.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Ether</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">450</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Booressure" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="6">
+        <div class="card">
+            <div class="div1">
+                <h1>Butler</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Butler is a refined and attentive Bangboo, always at your service. With its impeccable manners and a keen eye for detail, it ensures everything runs smoothly, offering help whenever needed.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">S</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">2500</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Butler" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="7">
+        <div class="card">
+            <div class="div1">
+                <h1>Cryboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Cryboo is an empathetic and gentle Bangboo, known for its soothing presence. Always ready to offer comfort, it provides a shoulder to lean on, turning tears into smiles with its caring nature.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Fire</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">450</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Cryboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="8">
+        <div class="card">
+            <div class="div1">
+                <h1>Devilboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Devilboo is a mischievous and fiery Bangboo, full of spunk and playful chaos. With its devilish grin and bold attitude, it loves stirring things up while keeping things exciting and unpredictable.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Ether</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">350</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Devilboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="9">
+        <div class="card">
+            <div class="div1">
+                <h1>Electroboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Electroboo is a high-energy Bangboo, charged with electricity and always ready to spark creativity. Its zippy movements and electrifying presence bring a burst of energy, lighting up any situation.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Electric</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">650</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new{ IDImage = "Electroboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="10">
+        <div class="card">
+            <div class="div1">
+                <h1>Exploreboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Exploreboo is an adventurous Bangboo, always ready to discover new places. With an insatiable wanderlust and a keen sense of direction, it’s the perfect companion for any journey or quest.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">None</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">250</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Exploreboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="11">
+        <div class="card">
+            <div class="div1">
+                <h1>Knightboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Knightboo is a noble Bangboo, always ready to protect and defend. With a strong sense of honor and bravery, it stands tall as a loyal guardian, ready to face any challenge head-on.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">None</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">750</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Knightboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="12">
+        <div class="card">
+            <div class="div1">
+                <h1>Luckyboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Luckyboo is a fortunate Bangboo, known for bringing good luck wherever it goes. With a positive attitude and an aura of luck, it turns every moment into an opportunity for success.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">800</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Luckyboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="13">
+        <div class="card">
+            <div class="div1">
+                <h1>Officerboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Officerboo is a disciplined Bangboo, always keeping things in order. With a sharp eye for detail and a strong sense of justice, it ensures that rules are followed and everyone stays on track.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">S</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">1200</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Officerboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="14">
+        <div class="card">
+            <div class="div1">
+                <h1>Paperboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Paperboo is a versatile Bangboo, known for its ability to adapt to any situation. It can transform into whatever is needed, making it a true problem-solver.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">800</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Paperboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="15">
+        <div class="card">
+            <div class="div1">
+                <h1>Penguinboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Penguinboo is a charming and playful Bangboo, with a cool, laid-back attitude. Always waddling through life with a smile, it brings warmth and joy to everyone it meets.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Ice</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">900</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Peguinboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="16">
+        <div class="card">
+            <div class="div1">
+                <h1>Red Moccus</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Red Moccus is a bold Bangboo, radiating confidence and power. With its vibrant red hue and daring nature, it’s always ready to take on challenges, leaving a trail of excitement behind.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">S</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">1700</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Red_Moccus" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="17">
+        <div class="card">
+            <div class="div1">
+                <h1>Resonaboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Resonaboo is a harmonious Bangboo, known for its ability to create balance. With a deep sense of empathy, it helps resolve conflicts and stay calm in even the most chaotic situations.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">S</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Ether</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">1600</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Resonaboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="18">
+        <div class="card">
+            <div class="div1">
+                <h1>Rocketboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Rocketboo is a ambitious Bangboo, always reaching for the stars. With its explosive never-ending drive, it’s ready to launch into any adventure and blast through obstacles with determination.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Fire</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">2600</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Rocket" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="19">
+        <div class="card">
+            <div class="div1">
+                <h1>Safety</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Safetyboo is a vigilant Bangboo, always ensuring everyone stays protected. With its watchful nature and quick response, it creates a secure environment, ready to act whenever safety is at risk.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">S</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">3600</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Safetyboo" })" class="details-button">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container" data-index="20">
+        <div class="card">
+            <div class="div1">
+                <h1>Sumoboo</h1>
+            </div>
+            <div class="div2">
+                <h2>Description</h2>
+                <h4>Sumoboo is a resilience and sturdy Bangboo. With its hefty frame and unshakable focus, it stands its ground in any situation, ready to push through obstacles with unwavering strength.</h4>
+            </div>
+            <div class="div3">
+                <span>Rank</span>
+                <span class="rank">A</span>
+            </div>
+            <div class="div4">
+                <span>Element</span>
+                <span class="element">Physical</span>
+            </div>
+            <div class="div5">
+                <span>Price</span>
+                <span class="price">200</span>
+            </div>
+            <div class="div6">
+                <a href="@Url.RouteUrl("product-info", new { IDImage = "Sumoboo" })" class="details-button">Info</a>
+            </div>
+        </div>      
+    </div>
+    <script src="~/js/BangbooJavaScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+﻿@model IEnumerable<Bangboo_E_Commerce.Entities.Boorder>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/efa6b62b9f14c00a8449fe121136f553?family=Haulage+Commercial+W00+Bold+It" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/3889a81d538246d1cdb7bf2bd997fa72?family=Korataki+W01+Regular" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/de335dd5a66ff095f317757fc7fb58a5?family=Korataki" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Bebas Neue", sans-serif;
+        }
+
+        .order-container {
+            display: flex;
+            margin-top: 5%;
+            padding: 20px;
+            width: 700px;
+            margin-right: auto;
+            margin-left: auto;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+
+        .shop {
+            font-size: 24px;
+            background-color: black;
+            color: white;
+            padding: 5px;
+            font-family: "Bebas Neue", sans-serif;
+            margin-top: -10px;
+            border-width: 0;
+        }
+
+            .shop:hover {
+                color: #c6e800
+            }
+
+        .empty-order-message {
+            text-align: center;
+            margin-top: 120px;
+            font-family: "Korataki W01 Regular";
+        }
+
+            .empty-order-message h2 {
+                font-size: 24px;
+                color: black;
+                margin-bottom: 30px;
+            }
+
+            .empty-order-message button {
+                margin-top: 5px;
+                width: 80%;
+            }
+
+                .empty-order-message button:hover {
+                    color: #c6e800
+                }
+
+        .Order-content {
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .tbl-header {
+            background-color: #07ad90;
+            color: white;
+        }
+
+        .tbl-content {
+            height: 420px;
+            overflow-x: auto;
+            margin-top: 0px;
+            overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+
+            .tbl-content::-webkit-scrollbar {
+                display: none; /*Chrome, Safari, Edge*/
+            }
+
+        th {
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px;
+            text-align: left;
+            vertical-align: middle;
+            font-weight: 300;
+            font-size: 24px;
+            border-top: 3px solid #07ad90;
+            border-bottom: 3px solid #07ad90;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+
+        /*modal*/
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow: auto;
+            padding-top: 75px;
+            scrollbar-width: none; /* Firefox */
+            overflow: hidden;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 1% auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            border: 1px solid #888;
+            height: 600px;
+            width: 80%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow-x: auto;
+            overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .close {
+            position: absolute;
+            right: 10px;
+            top: -10px;
+            color: #aaa;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #EA3C53;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .details-table th,
+            .details-table td {
+                padding: 12px;
+                text-align: left;
+                border: 1px solid #07ad90;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .details-table th {
+                background-color: #07ad90;
+                color: white;
+            }
+
+            .details-table tbody tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+            .details-table tbody tr:hover {
+                background-color: #f1f1f1;
+                cursor: pointer;
+            }
+
+            .details-table td img {
+                max-width: 75px;
+                height: auto;
+                border-radius: 4px;
+            }
+
+        h3 {
+            text-align: center;
+            font-size: 32px;
+            color: #07ad90;
+        }
+
+        h4 {
+            font-size: 32px;
+            color: #07ad90;
+            margin-top: 20px;
+        }
+
+        .form {
+            margin-top: 10px;
+        }
+
+        .order-row {
+            display: flex;
+        }
+
+            .order-row p {
+                width: 30%;
+                text-align: left;
+                font-size: 20px;
+            }
+    </style>
+</head>
+<body>
+    @if (Model == null || !Model.Any())
+    {
+        <div class="order-container" id="order-container">
+            <div class="empty-order-message">
+                <h2>My Order</h2>
+                <h2>Your Order History is Empty</h2>
+                <span><button onclick="redirectToShop()" class="shop">Back To Bangboo Shopping</button></span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h2 style="margin-top: 85px; text-align: center; font-size: 40px; color: #07ad90;">Your Order History</h2>
+        <div class="Order-content">
+            <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                        <tr>
+                            <td style="width: 15%; text-align: center;">Transaction Id</td>
+                            <td style="width: 25%; text-align: center;">Buyer Info</td>
+                            <td style="text-align: center;">Payment Method</td>
+                            <th style="width: 13%; text-align: center;">Total Amount</th>
+                            <th style="width: 17%; text-align: center;">Created Date</th>
+                            <th style="text-align: center">Order Details</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tbl-content">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td style="width: 15%; text-align: center;">@order.TransactionId</td>
+                                <td style="width: 25%; text-align: center;">@order.SellerInfo</td>
+                                <td style="text-align: center;">@order.PaymentMethod</td>
+                                <td style="width: 13%; text-align: center;">@order.TotalAmount.ToString("0")</td>
+                                <td style="width: 17%; text-align: center;">@order.CreatedDate.ToString("dd/MM/yyyy hh:mm tt")</td>
+                                <td style="text-align: center">
+                                    <button style="background-color: black; border: none;" class="btn btn-primary" onclick="fetchOrderDetails(@order.Idorder)">
+                                        View Details
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    <div id="orderDetailsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="order"></div>
+            <h3>Your Order Details</h3>
+            <table class="details-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th style="width: 80px">Rank</th>
+                        <th style="width: 200px">Faction</th>
+                        <th>Attribute</th>
+                    </tr>
+                </thead>
+                <tbody id="order-details-body"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function redirectToShop() {
+            window.location.href = "/Bangboo/Product";
+        }
+    </script>
+    <script>
+        window.fetchOrderDetails = function (orderId) {
+            $.ajax({
+                url: '/Bangboo/GetOrderDetails',
+                method: 'GET',
+                data: { orderId: orderId },
+                success: function (data) {
+                    var orderDetailsBody = $('#order-details-body');
+                    var orderInfoDiv = $('#order');
+                    orderDetailsBody.empty();
+
+                    var orderInfo = `
+                                <div>
+                                    <h4>Order Information</h4>
+                                    <div class="form">
+                                        <div class="order-row">
+                                            <p><strong>Transaction ID:</strong> ${data[0].transactionId}</p>
+                                            <p><strong>Buyer Info:</strong> ${data[0].sellerInfo}</p>
+                                        </div>
+                                        <div class="order-row">
+                                            <p><strong>Payment Method:</strong> ${data[0].paymentMethod}</p>
+                                            <p><strong>Total Amount:</strong> $${data[0].totalAmount.toFixed(0)}</p>
+                                        </div>
+                                        <div class="order-row">
+                                            <p><strong>Created Date:</strong> ${formatDate(data[0].createdDate)}</p>                                </div>
+                                    </div>
+                                </div>
+                            `;
+                    orderInfoDiv.html(orderInfo);
+
+                    data.forEach(function (item) {
+                        var row = `<tr>
+                                                <td><img src="${item.productImage}" alt="Product Image" style="width: 75px; height: 75px;" /></td>
+                                                <td>${item.productName}</td>
+                                                <td>${item.quantity}</td>
+                                                <td>${item.price ? item.price.toFixed(0) : 'N/A'}</td>
+                                                <td>${item.total ? item.total.toFixed(0) : 'N/A'}</td>
+                                                <td style="width: 80px">${item.rank}</td>
+                                                <td style="width: 200px">${item.faction}</td>
+                                                <td>${item.attribute}</td>
+                                            </tr>`;
+                        orderDetailsBody.append(row);
+                    });
+
+                    openModal();
+                },
+                error: function () {
+                    alert('Failed to load order details.');
+                }
+            });
+        }
+
+        function openModal() {
+            document.getElementById('orderDetailsModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('orderDetailsModal').style.display = 'none';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            const hours = String(date.getHours() % 12 || 12).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+            return `${day}/${month}/${year} ${hours}:${minutes} ${ampm}`;
+        }
+    </script>
+</body>

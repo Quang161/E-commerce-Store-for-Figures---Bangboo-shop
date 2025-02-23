@@ -1,0 +1,71 @@
+﻿<head>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/efa6b62b9f14c00a8449fe121136f553?family=Haulage+Commercial+W00+Bold+It" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/3889a81d538246d1cdb7bf2bd997fa72?family=Korataki+W01+Regular" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/de335dd5a66ff095f317757fc7fb58a5?family=Korataki" rel="stylesheet">
+    <style>
+        .thank-you-container {
+            display: flex;
+            margin-top: 5%;
+            padding: 20px;
+            width: 700px;
+            margin-right: auto;
+            margin-left: auto;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .thank-you-message {
+            width: 100%;
+            text-align: center;
+            margin-top: 120px;
+            font-family: "Korataki W01 Regular";
+        }
+
+        .thank-you-message h2 {
+            font-size: 24px;
+            color: black;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-message button {
+            margin-top: 5px;
+            width: 80%;
+        }
+
+        .Order {
+            font-size: 24px;
+            background-color: black;
+            color: white;
+            padding: 5px;
+            font-family: "Bebas Neue", sans-serif;
+            margin-top: -10px;
+            border-width: 0;
+        }
+
+        .thank-you-message button:hover {
+            color: #c6e800
+        }
+
+        div h2::selection,
+        div p::selection {
+            background: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="thank-you-message">
+            <h2>Thank You for Your Purchase</h2>
+            <h2>Your order was placed successfully</h2>
+            <button onclick="redirectToOrder()" class="Order">Check your Bangboo Orders</button>
+        </div>
+    </div>
+    <script>
+        function redirectToOrder() {
+            window.location.href = "/Bangboo/Order";
+        }
+    </script>
+</body>
+

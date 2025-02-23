@@ -1,0 +1,87 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Bangboo_E_Commerce
+build_property.RootNamespace = Bangboo_E_Commerce
+build_property.ProjectDir = C:\Zip\Application software\TMDT\E-Commerce\Final_PQT\PQT-BangbooShop\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Zip\Application software\TMDT\E-Commerce\Final_PQT\PQT-BangbooShop
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Account/Subscribe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTdWJzY3JpYmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Bangboo/BangbooDetailsView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ2Jvb1xCYW5nYm9vRGV0YWlsc1ZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Bangboo/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ2Jvb1xDYXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Bangboo/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ2Jvb1xDaGVja291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Bangboo/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ2Jvb1xPcmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Bangboo/Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ2Jvb1xQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Bangboo/ThankYou.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZ2Jvb1xUaGFua1lvdS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Zip/Application software/TMDT/E-Commerce/Final_PQT/PQT-BangbooShop/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-1jegnu8kcj

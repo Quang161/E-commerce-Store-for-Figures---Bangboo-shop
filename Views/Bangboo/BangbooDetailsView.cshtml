@@ -1,0 +1,709 @@
+﻿@model Bangboo_E_Commerce.Models.BangbooDetailsViewModel
+@{
+    ViewData["Title"] = "View";
+
+}
+<head>
+    @section HeadMeta {
+        <meta property="og:site_name" content="Bangboo_shop_gg" />
+        <meta property="og:locale" content="vi_VN" />
+        <meta property="og:price:currency" content="VND" />
+        <meta property="og:title" content="@Model.Name" />
+        <meta property="og:description" content="@Model.Description" />
+        <meta property="og:url" content="@Url.RouteUrl("product-info", new { idImage = Model.ImageUrl.Split('/').Last().Split('.').First() })" />
+        <meta property="og:image" content="@Model.ImageUrl" />
+        <meta property="og:type" content="product" />
+        <meta property="og:price:amount" content="@Model.Price" />
+    }
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=674a99ee4d98db0019732bc1&product=inline-share-buttons&source=platform" async="async"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/efa6b62b9f14c00a8449fe121136f553?family=Haulage+Commercial+W00+Bold+It" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/3889a81d538246d1cdb7bf2bd997fa72?family=Korataki+W01+Regular" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/de335dd5a66ff095f317757fc7fb58a5?family=Korataki" rel="stylesheet">
+    <style>
+        body {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            background-color: #FBFCF8;
+            overflow: hidden;
+        }
+
+        .product-container {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1100px;
+            margin-top: 100px;
+        }
+
+        .product_image {
+            position: relative;
+            padding-right: 100px;
+            left: 0;
+            z-index: 2;
+        }
+
+        .standing_img {
+            position: absolute;
+            z-index: 1;
+            margin-top: 9.5%;
+            left: 9%;
+            height: 600px;
+        }
+
+        .product_information {
+            padding-top: 50px;
+            padding-left: 50px;
+            position: relative;
+            right: 0;
+        }
+
+        .name {
+            font-size: 72px;
+        }
+
+        .des {
+            font-size: 24px;
+            color: #2A3335;
+        }
+
+        .rank {
+            font-size: 24px;
+            color: #2A3335;
+        }
+
+        .att {
+            font-size: 24px;
+            color: #2A3335;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #2A3335;
+        }
+
+        .Quantity {
+            font-size: 24px;
+            padding-right: 10px;
+        }
+
+        .Add {
+            margin-top: 10px;
+            padding: 5px;
+            width: 42.5%;
+            background-color: #c6e800;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            font-size: 20px;
+            column-gap: 20px;
+            padding-top: 10px;
+        }
+
+        .quantity_container {
+            display: flex;
+            padding-top: 10px;
+        }
+
+        .qty-input {
+            max-width: 100px;
+            color: #000;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border: 1px solid black;
+        }
+
+            .qty-input .product-qty,
+            .qty-input .qty-count {
+                background: transparent;
+                color: inherit;
+                font-weight: bold;
+                font-size: inherit;
+                border: none;
+                display: inline-block;
+                min-width: 0;
+                height: 1.5rem;
+                line-height: 1;
+            }
+
+                .qty-input .product-qty:focus,
+                .qty-input .qty-count:focus {
+                    outline: none;
+                }
+
+            .qty-input .product-qty {
+                min-width: 0;
+                display: inline-block;
+                text-align: center;
+                -webkit-appearance: textfield;
+                -moz-appearance: textfield;
+                appearance: textfield;
+            }
+
+                .qty-input .product-qty::-webkit-outer-spin-button, .qty-input .product-qty::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    margin: 0;
+                }
+
+            .qty-input .qty-count {
+                cursor: pointer;
+                width: 5rem;
+                font-size: 1.25em;
+                text-indent: -100px;
+                overflow: hidden;
+                position: relative;
+            }
+
+                .qty-input .qty-count:before, .qty-input .qty-count:after {
+                    content: "";
+                    height: 2px;
+                    width: 10px;
+                    position: absolute;
+                    display: block;
+                    background: #000;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+
+            .qty-input .qty-count--minus {
+                border-right: 1px solid #e2e2e2;
+            }
+
+            .qty-input .qty-count--add {
+                border-left: 1px solid #e2e2e2;
+            }
+
+                .qty-input .qty-count--add:after {
+                    transform: rotate(90deg);
+                }
+
+            .qty-input .qty-count:disabled {
+                cursor: not-allowed;
+            }
+
+        .qty-input {
+            border-radius: 4px;
+        }
+
+        .sharethis-inline-share-buttons {
+            padding-top: 20px;
+        }
+
+        span::selection,
+        strong::selection,
+        div::selection {
+            background: none;
+        }
+
+        .cart-container {
+            display: block;
+            position: fixed;
+            top: 46.5%;
+            left: 32.5%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 1000;
+            width: 550px;
+            max-width: 90%;
+            font-family: Arial, sans-serif;
+        }
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 10;
+        }
+
+            .loading-spinner img {
+                width: 100%;
+                height: 150px;
+            }
+
+
+        .cart-header {
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .cart-list:hover {
+            overflow-y: auto;
+            scrollbar-width: auto;
+        }
+
+        .cart-list:hover {
+            scrollbar-width: none; /* Firefox */
+        }
+
+            .cart-list:hover::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Edge */
+            }
+
+        .cart-list {
+            /*max-height: 400px;*/
+            max-height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cart-close {
+            position: absolute;
+            top: 3px;
+            right: 6px;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+            .cart-close:hover {
+                color: #EA3C53;
+            }
+
+        .cart-item {
+            display: flex;
+            position: relative;
+            align-items: center;
+            padding: 10px 0;
+            border-top: 1px solid #777777;
+        }
+
+            .cart-item img {
+                width: 100px;
+                height: 100px;
+                border-radius: 5px;
+                margin-right: 15px;
+            }
+
+            .cart-item span {
+                font-size: 14px;
+                flex-grow: 1;
+            }
+
+            .cart-item .item-details {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .cart-item .item-quantity {
+                color: #777777;
+            }
+
+                .cart-item .item-quantity input {
+                    width: 52.5px;
+                    color: #777777;
+                    border: none;
+                }
+
+            .cart-item .remove-button {
+                position: absolute;
+                font-size: 12.5px;
+                color: #EA3C53;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .remove-button {
+            font-family: "Korataki W01 Regular";
+            top: 10px;
+            padding-left: 427.5px;
+        }
+
+        .cart-list.has-scroll .remove-button {
+            /* right: 10px; */
+        }
+
+        .total {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            padding-top: 10px;
+            border-top: 1px solid #777777;
+            color: black;
+            max-height: 0px;
+        }
+
+        .cart-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .cart-footer .cart-button {
+                font-family: "Korataki W01 Regular";
+                background-color: #333;
+                color: white;
+                padding: 10px 10px;
+                border: none;
+                cursor: pointer;
+                font-size: 10px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                width: 30%;
+                margin-top: -15px;
+            }
+
+                .cart-footer .cart-button:hover {
+                    color: #c6e800;
+                }
+
+        .item-details span {
+            font-family: "Korataki W01 Regular";
+            font-size: 12px;
+            color: #777777;
+        }
+
+        .total span {
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 28px;
+            color: black;
+        }
+
+        .cart-header {
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 36px;
+        }
+
+        .cart-middle {
+            justify-content: space-between;
+        }
+
+        h2::selection,
+        h3::selection,
+        h4::selection,
+        div::selection {
+            background: #54626F;
+        }
+
+        h1::selection,
+        a::selection,
+        span::selection {
+            background: none;
+        }
+
+        .cart-header::selection,
+        .total::selection {
+            background: none;
+        }
+
+        .name::selection,
+        .des::selection,
+        .rank::selection,
+        .att::selection,
+        .price::selection,
+        .st-btn::selection {
+            background: none;
+        }
+
+        a:last-child {
+            color: black;
+        }
+
+        #dropdownAccount:hover {
+            color: #c6e800;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-details product-container">
+        <img class="product_image" src="@Model.ImageUrl" alt="@Model.Name" style="width: 612px; max-width: 612px; max-height: 512px;" draggable="false">
+        <img class="standing_img" src="~/Asset/Bangboo/standing.png" />
+        <div class="product_information">
+            <div class="name">@Model.Name</div>
+            <div class="des"><strong style="color: black;">Description:</strong> @Model.Description</div>
+            <div class="rank"><strong style="color: black;">Rank:</strong> @Model.Rank</div>
+            <div class="att"><strong style="color: black;">Attribute:</strong> @Model.Attribute</div>
+            <div class="price"><strong style="color: black;">Price:</strong> @Model.Price</div>
+
+            <form method="post" action="@Url.Action("AddToCart", "Bangboo")">
+                <input type="hidden" name="productId" value="@Model.ProductId">
+                <div class="quantity_container">
+                    <div class="Quantity"><strong>Quantity</strong></div>
+                    <div class="qty-input">
+                        <button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                        <input class="product-qty" type="number" name="quantity" value="1" min="1">
+                        <button class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                    </div>
+                </div>
+                <button class="Add" type="submit">Add to Cart</button>
+            </form>
+            <div class="sharethis-inline-share-buttons"></div>
+        </div>
+    </div>
+    <div>
+        <div class="cart-container" style="display: none;" id="cart-container">
+            <div class="loading-spinner" style="display: none;">
+                <img src="~/Asset/Bangboo/Bangboo_Running.gif" alt="Loading...">
+            </div>
+            <div class="cart-header">
+                In Your Cart
+                @inject IHttpContextAccessor HttpContextAccessor
+                <div class="btn-group">
+                    @if (HttpContextAccessor.HttpContext.Session.GetString("UserId") != null)
+                    {
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownAccount" data-bs-toggle="dropdown" aria-expanded="false">
+                            @HttpContextAccessor.HttpContext.Session.GetString("UserName")
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownAccount">
+                            <li>
+                                <form asp-controller="Bangboo" asp-action="Order" method="post" class="dropdown-item">
+                                    <button style="text-decoration: none; color: black; font-size: 20px;" type="submit" class="btn btn-link">Order History</button>
+                                </form>
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="dropdown-item">
+                                    <button style="text-decoration: none; color: black; font-size: 20px;" type="submit" class="btn btn-link">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownAccount" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownAccount">
+                            <li><a class="dropdown-item" href="@Url.Action("Login", "Account")">Login</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Register", "Account")">Sign Up</a></li>
+                        </ul>
+                    }
+                </div>
+            </div>
+            <div class="cart-list"></div>
+            <div class="cart-close" id="cart-close">X</div>
+            <div class="total">
+                Total: $<span id="total-price">0</span>
+            </div>
+            <div class="cart-footer">
+                <a class="cart-button" href="@Url.Action("Cart", "Bangboo")">My Cart</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var $qtyInputs = $(".qty-input");
+
+            if (!$qtyInputs.length) {
+                return;
+            }
+
+            var $inputs = $qtyInputs.find(".product-qty");
+            var $countBtn = $qtyInputs.find(".qty-count");
+
+            $inputs.change(function () {
+                var $this = $(this);
+                var $minusBtn = $this.siblings(".qty-count--minus");
+                var $addBtn = $this.siblings(".qty-count--add");
+                var qty = parseInt($this.val())
+                var qtyMin = parseInt($this.attr("min")) || 0;
+                var qtyMax = parseInt($this.attr("max")) || 20;
+
+                if (isNaN(qty) || qty <= qtyMin) {
+                    $this.val(qtyMin);
+                    $minusBtn.attr("disabled", true);
+                } else {
+                    $minusBtn.attr("disabled", false);
+
+                    if (qty >= qtyMax) {
+                        $this.val(qtyMax);
+                        $addBtn.attr("disabled", true);
+                    } else {
+                        $addBtn.attr("disabled", false);
+                    }
+                }
+            });
+
+            $countBtn.click(function () {
+                var operator = this.dataset.action;
+                var $this = $(this);
+                var $input = $this.siblings(".product-qty");
+                var qty = parseInt($input.val()) || 0;
+                var qtyMin = parseInt($input.attr("min")) || 0;
+                var qtyMax = parseInt($input.attr("max")) || 20;
+
+                if (operator === "add") {
+                    qty += 1;
+                    if (qty >= qtyMin + 1) {
+                        $this.siblings(".qty-count--minus").attr("disabled", false);
+                    }
+
+                    if (qty >= qtyMax) {
+                        qty = qtyMax;
+                        $this.attr("disabled", true);
+                    }
+                } else if (operator === "minus") {
+                    qty -= 1;
+                    if (qty <= qtyMin) {
+                        qty = qtyMin;
+                        $this.attr("disabled", true);
+                    }
+
+                    if (qty < qtyMax) {
+                        $this.siblings(".qty-count--add").attr("disabled", false);
+                    }
+                }
+
+                $input.val(qty);
+                $input.change();
+            });
+        });
+    </script>
+    <script>
+        document.querySelectorAll(".Add").forEach(function (button) {
+            button.addEventListener("click", function () {
+                var cartContainer = document.getElementById("cart-container");
+                cartContainer.style.display = "block";
+
+                var productId = button.closest(".product-container").querySelector("input[name='productId']").value;
+                var quantity = button.closest(".product-container").querySelector(".product-qty").value;
+
+                $.ajax({
+                    url: '/Bangboo/AddToCart',
+                    type: 'POST',
+                    data: { productId: productId, quantity: quantity },
+                    success: function (response) {
+                        if (response.success) {
+                            updateCartView(response.cartItems);
+                            showCart();
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Không thể thêm sản phẩm vào giỏ hàng:", error);
+                    }
+                });
+            });
+        });
+
+        document.querySelectorAll(".Add").forEach(function (button) {
+            button.addEventListener("click", function () {
+                var cartContainer = document.getElementById("cart-container");
+                cartContainer.style.display = "block";
+            });
+        });
+
+        document.getElementById("cart-close").addEventListener("click", function () {
+            const cartContainer = document.getElementById("cart-container");
+            cartContainer.style.display = "none";
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const buyButtons = document.querySelectorAll(".Add");
+            const cartContainer = document.querySelector(".cart-container");
+            const cartList = document.querySelector(".cart-list");
+            const totalPriceElement = document.getElementById("total-price");
+            const loadingSpinner = cartContainer.querySelector(".loading-spinner");
+            let totalPrice = 0;
+
+            buyButtons.forEach((button) => {
+                button.addEventListener("click", (e) => {
+                    e.preventDefault();
+
+                    loadingSpinner.style.display = "flex";
+
+                    const productContainer = button.closest(".product-container");
+                    if (!productContainer) {
+                        alert("Không tìm thấy sản phẩm.");
+                        return;
+                    }
+
+                    setTimeout(function () {
+                        const productContainer = button.closest(".product-container");
+                        const productName = productContainer.querySelector(".name").textContent;
+                        const productRank = productContainer.querySelector(".rank").textContent;
+                        const productElement = productContainer.querySelector(".att").textContent;
+                        const productPrice = parseInt(
+                            productContainer.querySelector(".price").textContent.replace(/[^0-9]/g, ""),
+                            10
+                        );
+                        const productQuantity = parseInt(productContainer.querySelector(".product-qty").value, 10);
+                        const imageElement = productContainer.querySelector(".product_image");
+                        const imagePath = imageElement.getAttribute('src');
+
+                        if (!imagePath) {
+                            alert("Không tìm thấy ảnh thumbnail.");
+                            loadingSpinner.style.display = "none";
+                            return;
+                        }
+
+                        let existingCartItem = Array.from(cartList.children).find(item => {
+                            const itemName = item.querySelector(".item-details span").textContent.trim();
+                            return itemName === productName;
+                        });
+
+                        if (existingCartItem) {
+                            const existingQuantity = existingCartItem.querySelector(".item-quantity");
+                            let newQuantity = parseInt(existingQuantity.textContent.replace(/[^0-9]/g, "")) + productQuantity;
+                            existingQuantity.textContent = `Quantity: ${newQuantity}`;
+
+                            totalPrice += productPrice * productQuantity;
+                            totalPriceElement.textContent = totalPrice;
+                        } else {
+                            const cartItem = document.createElement("div");
+                            cartItem.classList.add("cart-item");
+                            cartItem.innerHTML = `
+                                    <img src="${imagePath}" alt="${productName}">
+                                    <div class="item-details">
+                                        <span>${productName}</span>
+                                        <span>Rank ${productRank}</span>
+                                        <span>${productElement}</span>
+                                        <span class="item-quantity">
+                                            Quantity: ${productQuantity}
+                                        </span>
+                                        <span>$${productPrice}</span>
+                                    </div>
+                                `;
+                            cartList.appendChild(cartItem);
+
+                            totalPrice += productPrice * productQuantity;
+                            totalPriceElement.textContent = totalPrice;
+                        }
+
+                        cartContainer.style.display = "block";
+                        loadingSpinner.style.display = "none";
+
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+    <script>
+        function addProductToCart(product) {
+            const cartList = document.querySelector(".cart-list");
+            const cartContainer = document.getElementById("cart-container");
+
+            const cartItem = document.createElement("div");
+            cartItem.className = "cart-item";
+            cartItem.innerHTML = `
+                    <img src="${product.imageUrl}" alt="${product.name}">
+                    <span>${product.name}</span>
+                    <span>Quantity: ${product.quantity}</span>
+                    <span>Price: $${product.price}</span>
+                    <span>Total: $${product.total}</span>
+                `;
+
+            cartList.appendChild(cartItem);
+            updateCartTotal();
+        }
+    </script>
+</body>

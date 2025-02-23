@@ -1,0 +1,262 @@
+﻿.cart-container {
+    display: flex;
+    margin-top: 5%;
+    padding: 20px;
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+}
+
+.cart-list:hover {
+    overflow-y: auto;
+    scrollbar-width: auto;
+}
+
+.cart-list:hover {
+    scrollbar-width: none; /* Firefox */
+}
+
+.cart-list:hover::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.cart-list {
+    max-height: 440px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cart-close {
+    position: absolute;
+    top: 3px;
+    right: 6px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.cart-close:hover {
+    color: #EA3C53;
+}
+
+.cart-item {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    padding: 14px 0;
+    border-bottom: 2px solid #777777;
+    height: auto;
+}
+
+.cart-item img {
+    width: 190px;
+    height: 190px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.cart-item span {
+    font-size: 32px;
+    height: 48px;
+}
+
+.cart-item .remove-button {
+    height: 45px;
+}
+
+.cart-item .item-details {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.cart-item .item-quantity {
+    color: #777777;
+}
+
+.cart-item .item-quantity input {
+    width: 60px;
+    color: #777777;
+    border: none;
+}
+.price {
+    margin-bottom: auto;
+    height: 100%;
+}
+
+.item1 {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.remove-button {
+    font-size: 12.5px;
+    color: #EA3C53;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.total {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    padding-top: 10px;
+    color: black;
+    max-height: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+span {
+    font-family: "Bebas Neue", sans-serif;
+    color: black;
+}
+
+.total span {
+    font-size: 32px;
+    color: black;
+}
+
+.empty-cart-message {
+    text-align: center;
+    margin-top: 120px;
+    font-family: "Korataki W01 Regular";
+}
+
+.empty-cart-message h2 {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 25px;
+}
+
+.empty-cart-message button {
+    margin-top: 15px;
+    width: 80%;
+}
+
+.empty-cart-message button:hover {
+    color: #c6e800
+}
+
+.Shop {
+    font-size: 24px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    font-family: "Bebas Neue", sans-serif;
+    margin-top: -10px;
+    border-width: 0;
+}
+
+.Shop:hover {
+    color: #c6e800
+}
+
+.checkout {
+    font-size: 24px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    font-family: "Bebas Neue", sans-serif;
+    margin-top: -10px;
+    border-width: 0;
+}
+
+.checkout:hover {
+    color: #c6e800;
+}
+.qty-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-input .product-qty,
+.qty-input .qty-count {
+    background: transparent;
+    color: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    border: none;
+    display: inline-block;
+    min-width: 0;
+    line-height: 1;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+}
+
+.qty-input .product-qty:focus,
+.qty-input .qty-count:focus {
+    outline: none;
+}
+
+.qty-input .product-qty {
+    min-width: 0;
+    display: inline-block;
+    text-align: center;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.qty-input .product-qty::-webkit-outer-spin-button,
+.qty-input .product-qty::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.qty-input .qty-count {
+    cursor: pointer;
+    width: 5rem;
+    font-size: 1.25em;
+    text-indent: -100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.qty-input .qty-count:before,
+.qty-input .qty-count:after {
+    content: "";
+    height: 2px;
+    width: 10px;
+    position: absolute;
+    display: block;
+    background: #000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.qty-input .qty-count--minus {
+    border-right: 1px solid #e2e2e2;
+    width: 30px;
+}
+
+.qty-input .qty-count--add {
+    border-left: 1px solid #e2e2e2;
+    width: 30px;
+}
+
+.qty-input .qty-count--add:after {
+    transform: rotate(90deg);
+}
+
+.qty-input .qty-count:disabled {
+    cursor: not-allowed;
+}
+
+div h2::selection,
+div span::selection {
+    background: none;
+}

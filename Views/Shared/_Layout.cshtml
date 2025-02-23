@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Navbar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Bangboo_E_Commerce.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/efa6b62b9f14c00a8449fe121136f553?family=Haulage+Commercial+W00+Bold+It" rel="stylesheet">
+    @RenderSection("HeadMeta", required: false)
+    <style>
+        #UserAndCart {
+            font-family: "Bebas Neue", sans-serif; 
+            font-size: 20px; 
+            color: white;
+        } 
+        
+        #UserAndCart:hover {
+            color: #c6e800
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="Navbar">
+            <div class="NavbarItem">
+                <div class="NarbarLink">
+                    <a class="OverView" href="@Url.Action("Index", "Home")" id="Underline">OverView</a>
+                    <a class="Bangboo" href="@Url.Action("Product", "Bangboo")" id="Underline">Bangboo</a>
+                    <div class="Logo">
+                        <div class="caption" onclick="redirectToLink()">Bangboo</div>
+                        <div class="S">
+                            <img src="~/Asset/Logo/S.png" />
+                        </div>
+                    </div>
+                    @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+                    <a class="Cartboo" href="@Url.Action("Cart", "Bangboo")" id="Underline">
+                        <span id="UserAndCart">My Cartboo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/BangbooJavaScript.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        function redirectToLink() {
+            window.location.href = '';
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userName = "@HttpContextAccessor.HttpContext.Session.GetString("UserName")";
+            const userId = "@HttpContextAccessor.HttpContext.Session.GetString("UserId")";
+            const userAndCartElement = document.getElementById("UserAndCart");
+
+            let messages;
+            if (userId && userName) {
+                messages = [`Welcome, ${userName}`, "My Cartboo"];
+            } else {
+                messages = ["Welcome, Guest", "My Cartboo"];
+            }
+
+            let currentIndex = 0;
+
+            function rotateText() {
+                userAndCartElement.innerText = messages[currentIndex];
+                currentIndex = (currentIndex + 1) % messages.length;
+            }
+
+            rotateText();
+            setInterval(rotateText, 3000);
+        });
+    </script>
+</body>
+</html>

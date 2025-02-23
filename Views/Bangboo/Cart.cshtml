@@ -1,0 +1,268 @@
+﻿<head>
+    <link rel="stylesheet" href="~/css/Cartboo.css?v=1.1">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/efa6b62b9f14c00a8449fe121136f553?family=Haulage+Commercial+W00+Bold+It" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/3889a81d538246d1cdb7bf2bd997fa72?family=Korataki+W01+Regular" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/de335dd5a66ff095f317757fc7fb58a5?family=Korataki" rel="stylesheet">
+    <style>
+        #dropdownAccount {
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 20px;
+        }
+
+            #dropdownAccount:hover {
+                color: #c6e800;
+            }
+
+        .dropdown-menu.show {
+            transform: translate(90px, 0px) !important;
+        }
+
+        .btn {
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 20px;
+        }
+
+            .btn:focus {
+                outline: none;
+                box-shadow: none;
+            }
+    </style>
+</head>
+<body>
+    <form id="csrf-form">
+        @Html.AntiForgeryToken()
+    </form>
+
+    <div class="cart-container" id="cart-container">
+        @if (ViewBag.CartItems == null || ((List<CartItem>)ViewBag.CartItems).Count == 0)
+        {
+            <div class="empty-cart-message">
+                <h2>My Carboo</h2>
+                <h2>Your Cart is Empty</h2>
+                <span><button onclick="redirectToShop()" class="Shop">Back To Bangboo Shopping</button></span>
+                <span><button onclick="redirectToOrder()" class="Shop">Check Out Your Bangboo Order History</button></span>
+            </div>
+        }
+        else
+        {
+            <button class="checkout" onclick="redirectToCheckout()">CONTINUE TO CHECK OUT</button>
+            <div class="cart-list">
+                @foreach (var item in ViewBag.CartItems as List<CartItem>)
+                {
+                    <div class="cart-item" data-product-id="@item.ProductId">
+                        <img src="@item.ImageUrl" alt="@item.Name">
+                        <div class="item-details">
+                            <span>@item.Name</span>
+                            <span class="item-price">Price: $@item.Price</span>
+                            <div class="qty-input">
+                                <button class="qty-count qty-count--minus" data-product-name="@item.Name" data-action="minus" @if (item.Quantity <= 1)
+                                {
+                                    <text>disabled</text>
+                                }>-</button>
+                                <input type="number" class="product-qty" data-product-name="@item.Name" value="@item.Quantity" min="1" readonly>
+                                <button class="qty-count qty-count--add" data-product-name="@item.Name" data-action="add">+</button>
+                            </div>
+                        </div>
+                        <div class="item1">
+                            <span class="price">
+                                <span>$@item.Total.ToString("0")</span>
+                            </span>
+                            <span class="remove-button" data-product-name="@item.Name">Remove</span>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="total">
+                <span style="margin-left: 500px;">Total:</span>
+                <span id="total-price">$@ViewBag.TotalPrice</span>
+            </div>
+            <div class="Account">
+            @inject IHttpContextAccessor HttpContextAccessor
+                <div class="btn-group">
+                    @if (HttpContextAccessor.HttpContext.Session.GetString("UserId") != null)
+                    {
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownAccount" data-bs-toggle="dropdown" aria-expanded="false">
+                            @HttpContextAccessor.HttpContext.Session.GetString("UserName")
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownAccount">
+                            <li>
+                                <form asp-controller="Bangboo" asp-action="Order" method="post" class="dropdown-item">
+                                    <button style="text-decoration: none; color: black; font-size: 20px;" type="submit" class="btn btn-link">Order History</button>
+                                </form>
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="dropdown-item">
+                                    <button style="text-decoration: none; color: black; font-size: 20px;" type="submit" class="btn btn-link">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownAccount" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownAccount">
+                            <li><a class="dropdown-item" href="@Url.Action("Login", "Account")">Login</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Register", "Account")">Sign Up</a></li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <script>
+        function redirectToCheckout() {
+            window.location.href = "/Bangboo/Checkout";
+        }
+
+        function redirectToShop() {
+            window.location.href = "/Bangboo/Product";
+        }
+
+        function redirectToOrder() {
+            window.location.href = "/Bangboo/Order";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const removeButtons = document.querySelectorAll(".remove-button");
+
+            const csrfToken = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            removeButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const productName = this.getAttribute("data-product-name");
+
+                    if (confirm("Are you sure you want to remove this item?")) {
+                        fetch("/Bangboo/RemoveFromCart", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "RequestVerificationToken": csrfToken
+                            },
+                            body: JSON.stringify(productName)
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    window.location.reload();
+                                } else {
+                                    alert("Failed to remove item from the cart.");
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error removing item:", error);
+                                alert("An error occurred while removing the item.");
+                            });
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const cartContainer = document.querySelector('#cart-container');
+
+            cartContainer.addEventListener('click', function (e) {
+                const productName = e.target.dataset.productName;
+
+                if (e.target.classList.contains('qty-count--add') || e.target.classList.contains('qty-count--minus')) {
+                    const action = e.target.dataset.action;
+                    const row = e.target.closest('.cart-item');
+                    const quantityInput = row.querySelector('.product-qty');
+                    let quantity = parseInt(quantityInput.value);
+
+                    if (action === 'add') {
+                        quantity++;
+                    } else if (action === 'minus' && quantity > 1) {
+                        quantity--;
+                    }
+
+                    quantityInput.value = quantity;
+                    updateCartItemPrice(row, quantity);
+                    updateCartQuantity(productName, quantity);
+                    updateButtonStates(row, quantity);
+                }
+
+                if (e.target.classList.contains('remove-button')) {
+                    removeCartItem(productName);
+                }
+            });
+
+            function updateButtonStates(row, quantity) {
+                const minusButton = row.querySelector('.qty-count--minus');
+                const addButton = row.querySelector('.qty-count--add');
+
+                if (quantity <= 1) {
+                    minusButton.disabled = true;
+                } else {
+                    minusButton.disabled = false;
+                }
+                addButton.disabled = false;
+            }
+
+            function updateCartItemPrice(row, quantity) {
+                const priceElement = row.querySelector('.item-price');
+                const unitPrice = parseFloat(priceElement.textContent.replace('Price: $', ''));
+                const totalPrice = unitPrice * quantity;
+
+                row.querySelector('.price span').textContent = `$${totalPrice.toFixed(0)}`;
+                updateCartTotal();
+            }
+
+            function updateCartTotal() {
+                let total = 0;
+                const items = document.querySelectorAll('.cart-item');
+                items.forEach(function (item) {
+                    const price = parseFloat(item.querySelector('.price span').textContent.replace('$', '').replace(/,/g, ''));
+                    total += price;
+                });
+
+                const totalPriceElement = document.querySelector('#total-price');
+                totalPriceElement.textContent = `$${total.toFixed(0)}`;
+            }
+
+            function updateCartQuantity(productName, quantity) {
+                fetch('/Bangboo/UpdateCartQuantity', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify({ ProductName: productName, Quantity: quantity })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        const row = document.querySelector(`.cart-item[data-product-name="${productName}"]`);
+                        row.querySelector('.price span').textContent = `$${data.newTotal.toFixed(0)}`;
+                    })
+                    .catch(error => {
+                        console.error('Error updating cart:', error);
+                    });
+            }
+
+            function removeCartItem(productName) {
+                fetch('/Bangboo/RemoveFromCart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ productName: productName })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        const row = document.querySelector(`.cart-item[data-product-name="${productName}"]`);
+                        row.remove();
+                        updateCartTotal();
+                    })
+                    .catch(error => {
+                        console.error('Error removing item:', error);
+                    });
+            }
+
+            const cartItems = document.querySelectorAll('.cart-item');
+            cartItems.forEach(item => {
+                const quantityInput = item.querySelector('.product-qty');
+                const quantity = parseInt(quantityInput.value);
+                updateButtonStates(item, quantity);
+            });
+        });
+    </script>
+</body>

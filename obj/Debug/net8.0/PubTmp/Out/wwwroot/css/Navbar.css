@@ -1,0 +1,143 @@
+﻿html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    max-height: 75px;
+}
+
+body {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.Navbar {
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-right: 75px;
+    height: 75px;
+    background-color: #222122;
+}
+
+.NavbarItem {
+    display: inline;
+}
+
+.NarbarLink {
+    position: relative;
+}
+
+a {
+    color: #EFEFEF;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: .05em;
+    transition: background 500ms,color 500ms,transform 500ms;
+    float: left;
+}
+
+a:nth-child(2) {
+    font-size: 20px;
+    margin-left: 3.6rem;
+    color: #EFEFEF;
+}
+
+a:last-child {
+    float: right;
+    font-size: 20px;
+    margin-left: 3.6rem;
+    color: #EFEFEF;
+}
+
+.NarbarLink a:hover {
+    color: #c6e800;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.12);
+}
+
+/*
+.btn-group > .btn {
+    top: -10px;
+    margin-left: -120px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-family: "Bebas Neue", sans-serif;
+    color: #EFEFEF;
+    max-width: 100px;
+}
+*/
+
+#Underline {
+    overflow: hidden;
+}
+
+#Underline::before {
+    content: "";
+    width: 100%;
+    height: 5%;
+    background-color: #c6e800;
+    position: absolute;
+    bottom: 0%;
+    left: -100%;
+    transition: all 0.75s;
+}
+
+#Underline:hover::before {
+    left: 0%;
+}
+
+.caption {
+    position: absolute;
+    color: #c6e800;
+    font-family: "Haulage Commercial W00 Bold It", sans-serif;
+    left: 50%;
+    transform: translate(-50%, -42.5%);
+    font-size: 64px;
+    cursor: pointer;
+}
+
+.Logo img {
+    position: absolute;
+    width: 48px;
+    height: auto;
+    left: 60%;
+}
+
+.caption::selection {
+    background: none;
+}
+
+img::selection {
+    background: none;
+}
+
+a::selection {
+    background: #54626F;
+}
+
+@media screen and (max-width: 640px) {
+    a {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .Logo img {
+        position: absolute;
+        left: 92.5%;
+    }
+}

@@ -1,0 +1,614 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-bottom: 0px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.sidebar a {
+    text-decoration: none;
+    position: relative;
+    opacity: 0;
+    display: block;
+}
+
+.sidebar {
+    position: fixed;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: 110vh;
+    padding: 1rem;
+    z-index: 3;
+}
+
+.progress-bar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border-radius: 1.6rem;
+    padding: 0.8rem;
+    cursor: pointer;
+    background-color: #222122;
+}
+
+.progress-bar a:hover {
+    color: #c6e800;
+    cursor: pointer;
+    transform: scale(1.12);
+}
+
+
+li {
+    list-style: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.progress-bar:hover li {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 0.8rem;
+    background-color: transparent;
+}
+
+li.active {
+    color: #c6e800;
+}
+
+.progress-bar:hover a {
+    opacity: 1;
+    background-color: #222122;
+}
+
+@media screen and (max-width: 640px) {
+    #sidebar {
+        display: none;
+    }
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+}
+
+.SectionList {
+    width: 100%;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.SectionList::-webkit-scrollbar {
+    display: none;
+}
+
+/* section 1 */
+
+.s1 {
+    position: relative;
+    background-image: url(/Asset/01.jpg);
+    background-repeat: no-repeat;
+}
+
+.s1 .img01 img {
+    background-size: cover;
+    transform: translate(-50%, -42%);
+    width: 75%;
+    height: 85%;
+    min-width: 425px;
+    position: absolute;
+    display: block;
+    margin-top: -10px;
+    border: 5px solid black;
+    border-radius: 15px;
+    z-index: 0;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.img02 img{
+    position: absolute;
+    width: 200px;
+    height: auto;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* section 2 */
+
+.s2 {
+    position: relative;
+    background-color: #3B3B3B;
+    background-image: url(/Asset/09.png), url(/Asset/010.png);
+    background-position: left, right;
+    background-repeat: no-repeat;
+}
+
+.Our {
+    position: absolute;
+    top: 12%;
+    left: 20%;
+    right: 20%;
+    text-align: center;
+}
+
+.Our01 {
+    font-family: "Haulage Commercial W00 Bold It";
+    font-size: 40px;
+    color: white;
+    padding-bottom: 8px;
+}
+
+.Our02 {
+    font-family: "Korataki W01 Regular";
+    font-size: 18px;
+    color: white;
+}
+
+.OurImg {
+    display: block;
+    margin-top: 12.5%;
+    cursor: pointer;
+    width: 50%;
+    height: auto;
+}
+
+.OurImg img {
+    width: 100%;
+    height: auto;
+    border: 5px solid gray;
+}
+
+@media screen and (max-width: 640px) {
+    .OurImg {
+        position: absolute;
+        top: 55%;
+    }
+}
+
+/* section 3 */
+
+.s3 {
+    position: relative;
+    background-image: url(/Asset/04.jpg);
+    background-repeat: no-repeat;
+}
+
+.img03::selection {
+    background: none;
+}
+
+.img04::selection {
+    background: none;
+}
+
+div::selection {
+    background: #54626F;
+}
+
+.Intro {
+    position: absolute;
+    text-align: center;
+    top: 12%;
+    left: 20%;
+    right: 20%;
+}
+
+.Intro01 {
+    font-family: "Haulage Commercial W00 Bold It", sans-serif;
+    font-size: 40px;
+    color: #c6e800;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 640px) {
+    .Intro01 {
+        font-size: 30px;
+    }
+}
+
+.Intro02 {
+    font-family: "Korataki W01 Regular";
+    font-size: 18px;
+    color: #777777;
+    margin-bottom: 24px;
+}
+
+.Intro03 {
+    font-family: "Korataki W01 Regular";
+    font-size: 18px;
+    color: white;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.Intro a {
+    float: none;
+}
+
+.Intro a:hover {
+    text-decoration: underline;
+    color: #c6e800;
+}
+
+.img03 {
+    position: absolute;
+    text-align: center;
+    top: 44.5%;
+    right: 47.5%;
+    color: white;
+}
+
+.img03 a:hover {
+    text-decoration: underline;
+    color: #c6e800;
+}
+
+
+.bestDps {
+    border: 5px solid gold;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 70%;
+    height: auto;
+}
+
+.bestSup {
+    border: 5px solid orange;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 70%;
+    height: auto;
+}
+
+.dpstext1 {
+    font-family: "Korataki W01 Regular";
+    font-size: 24px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.dpstext2 {
+    font-family: "Korataki W01 Regular";
+    font-size: 16px;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.suptext1 {
+    font-family: "Korataki W01 Regular";
+    font-size: 24px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.suptext2 {
+    font-family: "Korataki W01 Regular";
+    font-size: 16px;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.img04 {
+    position: absolute;
+    text-align: center;
+    top: 44.5%;
+    left: 47.5%;
+    color: white;
+}
+
+.img04 a:hover {
+    text-decoration: underline;
+    color: #c6e800;
+}
+
+/* section 4 */
+
+.s4 {
+    position: relative;
+    background-image: url(/Asset/Bangboo/Bang.jpg);
+    background-repeat: no-repeat;
+}
+
+.Feature {
+    position: absolute;
+    top: 12.5%;
+    left: 20%;
+    right: 20%;
+    text-align: center;
+}
+
+.Feature01 {
+    font-family: "Haulage Commercial W00 Bold It", sans-serif;
+    font-size: 48px;
+    text-shadow: 0 0 5px #c6e800, 0 0 15px #c6e800, 0 0 20px #c6e800, 0 0 40px #c6e800, 0 0 60px #11ff00, 0 0 10px #00ff66, 0 0 98px #11ff00;
+    color: white;
+    text-align: center;
+    animation: blink 12s infinite;
+    -webkit-animation: blink 12s infinite;
+}
+
+@-webkit-keyframes blink {
+    20%, 24%, 55% {
+        color: white;
+        text-shadow: none;
+    }
+
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 0 0 5px #c6e800, 0 0 15px #c6e800, 0 0 20px #c6e800, 0 0 40px #c6e800, 0 0 60px #11ff00, 0 0 10px #00ff66, 0 0 98px #11ff00;
+        color: #fff6a9;
+    }
+}
+
+@keyframes blink {
+    20%, 24%, 55% {
+        color: white;
+        text-shadow: none;
+    }
+
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 0 0 5px #c6e800, 0 0 15px #c6e800, 0 0 20px #c6e800, 0 0 40px #c6e800, 0 0 60px #11ff00, 0 0 10px #00ff66, 0 0 98px #11ff00;
+        color: #fff6a9;
+    }
+}
+
+.carousel {
+    margin-top: 8%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 36px;
+    grid-row-gap: 0px;
+}
+
+.carousel .div1 {
+    background-color: orangered;
+    grid-area: 1 / 1 / 2 / 2;
+    width: 300px;
+    height: 450px;
+    background-image: url(/Asset/Bangboo/Sumoboo_Portrait_physical.webp);
+    border: 4px solid white;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.carousel .div2 {
+    background-color: #e6e600;
+    grid-area: 1 / 2 / 2 / 3;
+    width: 300px;
+    height: 450px;
+    background-image: url(/Asset/Bangboo/Electroboo_Portrait_electric.webp);
+    border: 4px solid #ffff7f;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.carousel .div3 {
+    background-color: lightseagreen;
+    grid-area: 1 / 3 / 2 / 4;
+    width: 300px;
+    height: 450px;
+    background-image: url(/Asset/Bangboo/Officer_Cui_Portrait_physical.webp );
+    border: 4px solid aqua;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.carousel .div4 {
+    background-color: lightcyan;
+    grid-area: 1 / 4 / 2 / 5;
+    width: 300px;
+    height: 450px;
+    background-image: url(/Asset/Bangboo/Knightboo_Portrait_null.webp);
+    border: 4px solid #59788E;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.carousel .div1:hover {
+    transform: translateY(25px);
+}
+
+.carousel .div2:hover {
+    transform: translateY(25px);
+}
+
+.carousel .div3:hover {
+    transform: translateY(25px);
+}
+
+.carousel .div4:hover {
+    transform: translateY(25px);
+}
+
+.hide1 {
+    display: none;
+}
+
+.hide2 {
+    display: none;
+}
+
+.hide3 {
+    display: none;
+}
+
+.hide4 {
+    display: none;
+}
+
+.div1:hover + .hide1 {
+    display: block;
+    color: white;
+    position: absolute;
+    top: 12%;
+    left: 1%;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: "Haulage Commercial W00 Bold It", sans-serif;
+    font-size: 48px;
+    cursor: pointer;
+}
+
+.div2:hover + .hide2 {
+    display: block;
+    color: #FFFFCC;
+    position: absolute;
+    top: 12%;
+    left: 26.5%;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: "Haulage Commercial W00 Bold It", sans-serif;
+    font-size: 48px;
+    cursor: pointer;
+}
+
+.div3:hover + .hide3 {
+    display: block;
+    color: aqua;
+    position: absolute;
+    top: 12%;
+    left: 52.5%;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: "Haulage Commercial W00 Bold It", sans-serif;
+    font-size: 48px;
+    cursor: pointer;
+}
+
+.div4:hover + .hide4 {
+    display: block;
+    color: #59788E;
+    position: absolute;
+    top: 12%;
+    left: 78%;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: "Haulage Commercial W00 Bold It", sans-serif;
+    font-size: 48px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 640px) {
+    .carousel {
+        margin-top: 50%;
+        grid-column-gap: 6px;
+    }
+
+    .carousel .div1 {
+        width: 105px;
+        height: 205px;
+        background-image: url(/Asset/Bangboo/Cryboo_Portrait_fire.webp);
+        background-size: cover;
+    }
+
+    .carousel .div2 {
+        width: 105px;
+        height: 205px;
+        background-image: url(/Asset/Bangboo/Sharkboo_Portrait_ice.webp);
+        background-size: cover;
+    }
+
+    .carousel .div3 {
+        width: 105px;
+        height: 205px;
+        background-image: url(/Asset/Bangboo/Electroboo_Portrait_electric.webp);
+        background-size: cover;
+    }
+
+    .carousel .div4 {
+        width: 105px;
+        height: 205px;
+        background-image: url(/Asset/Bangboo/Knightboo_Portrait_null.webp);
+        background-size: cover;
+    }
+
+    .div1:hover + .hide1 {
+        font-size: 24px;
+    }
+
+    .div2:hover + .hide2 {
+        font-size: 24px;
+    }
+
+    .div3:hover + .hide3 {
+        font-size: 24px;
+    }
+
+    .div4:hover + .hide4 {
+        font-size: 24px;
+    }
+}
+
+/* section 5 */
+
+.s5 {
+    position: relative;
+    background-image: url(/Asset/TV_10.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gallery-container {
+    position: absolute;
+    top: 23.5%;
+}
+
+.swiper {
+    width: 800px;
+    height: auto;
+    border: 4px solid black;
+    border-top-color: white;
+    border-bottom-color: #c6e800;
+    border-left-color: white;
+    border-right-color: #c6e800;
+    border-radius: 25px;
+}
+
+.swiper img {
+    width: auto;
+    height: 445.5px;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #c6e800 !important;
+}
+
+@media screen and (max-width: 640px) {
+    .gallery-container {
+        position: absolute;
+        top: 40%;
+    }
+
+    .swiper {
+        width: 400px;
+        height: auto;
+    }
+
+    .swiper img {
+        width: 400px;
+        height: auto;
+    }
+}
+
